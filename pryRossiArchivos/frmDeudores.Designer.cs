@@ -1,6 +1,6 @@
 ﻿namespace pryRossiArchivos
 {
-    partial class frmListadoClientes
+    partial class frmDeudores
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,7 @@
             this.gbConsulta.Location = new System.Drawing.Point(12, 12);
             this.gbConsulta.Name = "gbConsulta";
             this.gbConsulta.Size = new System.Drawing.Size(494, 380);
-            this.gbConsulta.TabIndex = 13;
+            this.gbConsulta.TabIndex = 14;
             this.gbConsulta.TabStop = false;
             this.gbConsulta.Text = "Consulta de Datos";
             // 
@@ -153,16 +153,17 @@
             this.lblClientes.TabIndex = 8;
             this.lblClientes.Text = "Cantidad Clientes:";
             // 
-            // frmListadoClientes
+            // frmDeudores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 409);
+            this.ClientSize = new System.Drawing.Size(518, 408);
             this.Controls.Add(this.gbConsulta);
-            this.Name = "frmListadoClientes";
+            this.HelpButton = true;
+            this.Name = "frmDeudores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Listado de Clientes";
-            this.Load += new System.EventHandler(this.frmListadoClientes_Load);
+            this.Text = "CLIENTES DEUDORES";
+            this.Load += new System.EventHandler(this.frmDeudores_Load);
             this.gbConsulta.ResumeLayout(false);
             this.gbConsulta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
@@ -174,15 +175,15 @@
 
         private System.Windows.Forms.GroupBox gbConsulta;
         private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDeuda;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLimite;
         private System.Windows.Forms.Label lblPromedio;
         private System.Windows.Forms.Label lblCantClie;
         private System.Windows.Forms.Label lblPromDeuda;
         private System.Windows.Forms.Label lblTotalCli;
         private System.Windows.Forms.Label lblTotalDeuda;
         private System.Windows.Forms.Label lblClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDeuda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colLimite;
     }
 }

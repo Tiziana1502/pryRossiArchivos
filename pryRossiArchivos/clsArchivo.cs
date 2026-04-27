@@ -52,9 +52,45 @@ namespace pryRossiArchivos
             AD.Dispose();
         }
 
-        public void Calculos()
+        public Int32 CantClientes()
         {
+            String datoLeido;
+            string[] vecDatos = new string[4];
+            int total = 0;
 
+            StreamReader AD = new StreamReader(NombreArchivo);
+            datoLeido = AD.ReadLine();
+
+            while (datoLeido != null)
+            {
+                vecDatos = datoLeido.Split(';');
+
+                
+            }
+            datoLeido = AD.ReadLine();
+
+            AD.Close();
+            AD.Dispose();
+
+            return total;
+        }
+        public Int32 TotalDeuda()
+        {
+            String datoLeido;
+            Decimal total = 0;
+
+            StreamReader AD = new StreamReader(NombreArchivo);
+            datoLeido = AD.ReadLine();
+
+            while (datoLeido != null)
+            {
+                cant++;
+                datoLeido = AD.ReadLine();
+            }
+            AD.Close();
+            AD.Dispose();
+
+            return total;
         }
 
     }
