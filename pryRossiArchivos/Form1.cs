@@ -57,13 +57,15 @@ namespace pryRossiArchivos
         private void btnCargar_Click(object sender, EventArgs e)
         {
             arc.Grabar(txtCodigo.Text, txtUsuario.Text, txtDeuda.Text, txtLimite.Text);
-            MessageBox.Show("Datos Grabados");
+            MessageBox.Show("Los datos se grabaron correctamente", "Datos cargados", 
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Limpio los controles una vez que se hayan cargado
             txtCodigo.Text = "";
             txtUsuario.Text = "";
             txtDeuda.Text = "";
             txtLimite.Text = "";
+                      
         }
     }
 }

@@ -22,6 +22,10 @@ namespace pryRossiArchivos
         private void frmDeudores_Load(object sender, EventArgs e)
         {
             arc.Listar(dgvClientes);
+            lblTotalDeuda.Text = "$" + arc.TotalDeuda().ToString();
+            lblCantClie.Text = arc.CantDeudores().ToString();
+            lblPromedio.Text = "$" + arc.PromDeudores().ToString();
+            
         }
     }
 }

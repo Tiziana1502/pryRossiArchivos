@@ -22,6 +22,9 @@ namespace pryRossiArchivos
         private void frmListadoClientes_Load(object sender, EventArgs e)
         {
             arc.Listar(dgvClientes);
+            lblTotalDeuda.Text = "$" + arc.TotalDeuda().ToString();
+            lblCantClie.Text = arc.CantClientes().ToString();            
+            lblPromedio.Text = "$" + arc.Promedio().ToString(); 
         }
     }
 }

@@ -39,5 +39,11 @@ namespace pryRossiArchivos
             frmListadoClientes ven = new frmListadoClientes();
             ven.ShowDialog();
         }
+
+        private void listadoClientesDeudoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDeudores ven = new frmDeudores();
+            ven.ShowDialog();
+        }
     }
 }

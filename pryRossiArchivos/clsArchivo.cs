@@ -56,27 +56,27 @@ namespace pryRossiArchivos
         {
             String datoLeido;
             string[] vecDatos = new string[4];
-            int total = 0;
+            int cant = 0;
 
             StreamReader AD = new StreamReader(NombreArchivo);
             datoLeido = AD.ReadLine();
 
             while (datoLeido != null)
             {
-                vecDatos = datoLeido.Split(';');
-
                 
+                cant++;
+                datoLeido = AD.ReadLine();
             }
-            datoLeido = AD.ReadLine();
-
+            
             AD.Close();
             AD.Dispose();
 
-            return total;
+            return cant;
         }
-        public Int32 TotalDeuda()
+        public Decimal TotalDeuda()
         {
             String datoLeido;
+            string[] vecDatos = new string[4];
             Decimal total = 0;
 
             StreamReader AD = new StreamReader(NombreArchivo);
@@ -84,14 +84,98 @@ namespace pryRossiArchivos
 
             while (datoLeido != null)
             {
-                cant++;
-                datoLeido = AD.ReadLine();
+                vecDatos = datoLeido.Split(';');
+                total = total + Convert.ToDecimal(vecDatos[2]);
             }
+            datoLeido = AD.ReadLine();
+
             AD.Close();
             AD.Dispose();
 
             return total;
         }
+
+        public Decimal Promedio()
+        {
+            String datoLeido;
+            string[] vecDatos = new string[4];
+            Decimal total = 0;
+            int cant = 0;
+            Decimal promedio = 0;
+
+            StreamReader AD = new StreamReader(NombreArchivo);
+            datoLeido = AD.ReadLine();
+
+            while (datoLeido != null)
+            {
+                cant++;
+                vecDatos = datoLeido.Split(';');
+                total = total + Convert.ToDecimal(vecDatos[2]);
+                if (cant > 0)
+                {
+                    promedio = Math.Round(total / Convert.ToDecimal(vecDatos[2]));//Redondea p/tener 2 decimales
+                }
+               
+                datoLeido = AD.ReadLine();
+            }
+            AD.Close();
+            AD.Dispose();
+
+            return total/cant;
+        }
+
+        public Int32 CantDeudores()
+        {
+            String datoLeido;
+            string[] vecDatos = new string[4];
+            int cantDeud = 0;          
+
+            StreamReader AD = new StreamReader(NombreArchivo);
+            datoLeido = AD.ReadLine();
+
+            while (datoLeido != null && Convert.ToInt32(vecDatos[2]) > 0)
+            {
+                vecDatos = datoLeido.Split(';');
+                cantDeud++;
+                datoLeido = AD.ReadLine();
+
+            }
+
+            AD.Close();
+            AD.Dispose();
+
+            return cantDeud;
+        }
+        public Decimal PromDeudores()
+        {
+            String datoLeido;
+            string[] vecDatos = new string[4];
+            Decimal total = 0;
+            int cant = 0;
+            Decimal promedio = 0;
+
+            StreamReader AD = new StreamReader(NombreArchivo);
+            datoLeido = AD.ReadLine();
+
+            while (datoLeido != null)
+            {
+                cant++;
+                vecDatos = datoLeido.Split(';');
+                total = total + Convert.ToDecimal(vecDatos[2]);
+                if (cant > 0)
+                {
+                    promedio = Math.Round(total / Convert.ToDecimal(vecDatos[2]));//Redondea p/tener 2 decimales
+                }
+
+                datoLeido = AD.ReadLine();
+            }
+            AD.Close();
+            AD.Dispose();
+
+            return total / cant;
+        }
+        
+
 
     }
 }
