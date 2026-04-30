@@ -51,6 +51,34 @@ namespace pryRossiArchivos
             AD.Close();
             AD.Dispose();
         }
+        public bool ExisteCodigo(string cod)
+        {
+            string datoLeido;
+            string[] vecDatos;
+            bool encontrado = false;
+
+            // Verificamos si el archivo existe antes de intentar leerlo
+            if (File.Exists(NombreArchivo))
+            {
+                StreamReader AD = new StreamReader(NombreArchivo);
+                datoLeido = AD.ReadLine();
+
+                while (datoLeido != null)
+                {
+                    vecDatos = datoLeido.Split(';');
+                    // Comparamos el código del archivo con el que queremos ingresar
+                    if (vecDatos[0] == cod)
+                    {
+                        encontrado = true;
+                        break; // Si lo encuentra, sale del bucle
+                    }
+                    datoLeido = AD.ReadLine();
+                }
+                AD.Close();
+                AD.Dispose();
+            }
+            return encontrado;
+        }
 
         public Int32 CantClientes()
         {
@@ -86,8 +114,9 @@ namespace pryRossiArchivos
             {
                 vecDatos = datoLeido.Split(';');
                 total = total + Convert.ToDecimal(vecDatos[2]);
+                datoLeido = AD.ReadLine();
             }
-            datoLeido = AD.ReadLine();
+          
 
             AD.Close();
             AD.Dispose();
@@ -113,7 +142,7 @@ namespace pryRossiArchivos
                 total = total + Convert.ToDecimal(vecDatos[2]);
                 if (cant > 0)
                 {
-                    promedio = Math.Round(total / Convert.ToDecimal(vecDatos[2]));//Redondea p/tener 2 decimales
+                    promedio = Math.Round(total / cant);//Redondea p/tener 2 decimales
                 }
                
                 datoLeido = AD.ReadLine();
@@ -127,18 +156,21 @@ namespace pryRossiArchivos
         public Int32 CantDeudores()
         {
             String datoLeido;
-            string[] vecDatos = new string[4];
-            int cantDeud = 0;          
+            string[] vecDatos;
+            int cantDeud = 0;
 
             StreamReader AD = new StreamReader(NombreArchivo);
             datoLeido = AD.ReadLine();
 
-            while (datoLeido != null && Convert.ToInt32(vecDatos[2]) > 0)
+            while (datoLeido != null)
             {
                 vecDatos = datoLeido.Split(';');
-                cantDeud++;
+                // Primero separas los datos, luego comparas
+                if (Convert.ToDecimal(vecDatos[2]) > 0)
+                {
+                    cantDeud++;
+                }
                 datoLeido = AD.ReadLine();
-
             }
 
             AD.Close();
@@ -164,7 +196,7 @@ namespace pryRossiArchivos
                 total = total + Convert.ToDecimal(vecDatos[2]);
                 if (cant > 0)
                 {
-                    promedio = Math.Round(total / Convert.ToDecimal(vecDatos[2]));//Redondea p/tener 2 decimales
+                    promedio = Math.Round(total / cant);//Redondea p/tener 2 decimales
                 }
 
                 datoLeido = AD.ReadLine();
@@ -175,6 +207,60 @@ namespace pryRossiArchivos
             return total / cant;
         }
         
+        public void GenerarReporte()
+        {
+            
+            String datoLeido;
+            string[] vecDatos = new string[4];
+
+            //Abrir
+            StreamWriter Reporte = new StreamWriter("Reporte.csv", false, Encoding.UTF8);
+            Reporte.WriteLine("LISTADO DE CLIENTES");
+            Reporte.WriteLine("\n");
+            Reporte.WriteLine("Código; Nombre; Deuda; Límite");
+
+
+            StreamReader AD = new StreamReader(NombreArchivo);
+
+            //Leer
+            datoLeido = AD.ReadLine();
+           
+            Int32 cant = 0;
+            Decimal total = 0;
+            Decimal promedio = 0;
+
+            while (datoLeido != null)
+            {
+                vecDatos = datoLeido.Split(';'); //Pasamoslalinea a un vector, cada vez que vea un punto y coma va a separar la celda (lo corta)      
+                Reporte.Write(vecDatos[0]); ;
+                Reporte.Write(";");
+                Reporte.Write(vecDatos[1]);
+                Reporte.Write(";");
+                Reporte.Write(vecDatos[2]);
+                Reporte.Write(";");
+                Reporte.WriteLine(vecDatos[3]);
+
+                datoLeido = AD.ReadLine();
+                cant++; //acumulala cantidad de clientes
+                total = total + Convert.ToDecimal(vecDatos[2]);
+                promedio = Math.Round(total / cant);
+            }
+            //Cerrar
+            AD.Close();
+            AD.Dispose();
+
+            Reporte.WriteLine(";");
+            Reporte.Write("Total Deudas:;;");
+            Reporte.WriteLine(total);
+            Reporte.Write("Cantidad de Clientes:;;");
+            Reporte.WriteLine(cant);
+            Reporte.Write("Promedio deudas:;;");
+            Reporte.WriteLine(promedio);
+
+            //Cerrar
+            Reporte.Close();
+            Reporte.Dispose();
+        }
 
 
     }

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace pryRossiArchivos
@@ -56,9 +57,19 @@ namespace pryRossiArchivos
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            arc.Grabar(txtCodigo.Text, txtUsuario.Text, txtDeuda.Text, txtLimite.Text);
-            MessageBox.Show("Los datos se grabaron correctamente", "Datos cargados", 
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (arc.ExisteCodigo(txtCodigo.Text))
+            {
+                MessageBox.Show("El código ingresado ya pertenece a otro cliente.", "Código Duplicado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCodigo.Focus(); // Pone el cursor en el error
+                txtCodigo.SelectAll();
+            }
+            else
+            {
+                arc.Grabar(txtCodigo.Text, txtUsuario.Text, txtDeuda.Text, txtLimite.Text);
+                MessageBox.Show("Los datos se grabaron correctamente", "Datos cargados",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             //Limpio los controles una vez que se hayan cargado
             txtCodigo.Text = "";
@@ -66,6 +77,16 @@ namespace pryRossiArchivos
             txtDeuda.Text = "";
             txtLimite.Text = "";
                       
+        }
+        
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Solo permite números (char.IsDigit) y la tecla de borrar (char.IsControl)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Bloquea cualquier otro caracter
+            }
         }
     }
 }

@@ -19,13 +19,13 @@ namespace pryRossiArchivos
 
         private void aToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1 ven = new Form1();
+            Form ven = new Form1();
             ven.ShowDialog();
         }
 
         private void acercaDelDesarrolladorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAcercaDe ven = new frmAcercaDe();
+            Form ven = new frmAcercaDe();
             ven.ShowDialog();
         }
 
@@ -36,13 +36,13 @@ namespace pryRossiArchivos
 
         private void listadoDeTodosLosClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmListadoClientes ven = new frmListadoClientes();
+            Form ven = new frmListadoClientes();
             ven.ShowDialog();
         }
 
         private void listadoClientesDeudoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmDeudores ven = new frmDeudores();
+            Form ven = new frmDeudores();
             ven.ShowDialog();
         }
     }

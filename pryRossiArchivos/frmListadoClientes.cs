@@ -26,5 +26,12 @@ namespace pryRossiArchivos
             lblCantClie.Text = arc.CantClientes().ToString();            
             lblPromedio.Text = "$" + arc.Promedio().ToString(); 
         }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            arc.GenerarReporte();
+            MessageBox.Show("El reporte ha sido realizado", "Reporte Generado",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
