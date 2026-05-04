@@ -41,12 +41,14 @@
             this.lblTotalCli = new System.Windows.Forms.Label();
             this.lblTotalDeuda = new System.Windows.Forms.Label();
             this.lblClientes = new System.Windows.Forms.Label();
+            this.Ordenar = new System.Windows.Forms.Button();
             this.gbConsulta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // gbConsulta
             // 
+            this.gbConsulta.Controls.Add(this.Ordenar);
             this.gbConsulta.Controls.Add(this.btnReporte);
             this.gbConsulta.Controls.Add(this.dgvClientes);
             this.gbConsulta.Controls.Add(this.lblPromedio);
@@ -174,6 +176,17 @@
             this.lblClientes.TabIndex = 8;
             this.lblClientes.Text = "Cantidad Clientes:";
             // 
+            // Ordenar
+            // 
+            this.Ordenar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ordenar.Location = new System.Drawing.Point(23, 274);
+            this.Ordenar.Name = "Ordenar";
+            this.Ordenar.Size = new System.Drawing.Size(129, 33);
+            this.Ordenar.TabIndex = 13;
+            this.Ordenar.Text = "Ordenado";
+            this.Ordenar.UseVisualStyleBackColor = true;
+            this.Ordenar.Click += new System.EventHandler(this.Ordenar_Click);
+            // 
             // frmListadoClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,5 +219,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDeuda;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLimite;
         private System.Windows.Forms.Button btnReporte;
+        private System.Windows.Forms.Button Ordenar;
     }
 }

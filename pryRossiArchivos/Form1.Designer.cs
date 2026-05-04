@@ -66,6 +66,7 @@
             this.txtLimite.Size = new System.Drawing.Size(93, 20);
             this.txtLimite.TabIndex = 7;
             this.txtLimite.TextChanged += new System.EventHandler(this.txtLimite_TextChanged);
+            this.txtLimite.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimite_KeyPress);
             // 
             // txtUsuario
             // 
@@ -102,6 +103,7 @@
             this.txtDeuda.Size = new System.Drawing.Size(93, 20);
             this.txtDeuda.TabIndex = 5;
             this.txtDeuda.TextChanged += new System.EventHandler(this.txtDeuda_TextChanged);
+            this.txtDeuda.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDeuda_KeyPress);
             // 
             // lblUsuario
             // 

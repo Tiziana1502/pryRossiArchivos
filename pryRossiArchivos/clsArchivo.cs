@@ -11,11 +11,22 @@ namespace pryRossiArchivos
     internal class clsArchivo
     {
         public string NombreArchivo = "Clientes.csv";
+        private struct RegClientes
+        {
+            public int Codigo;
+            public string Nombre;
+            public decimal Deuda;
+            public decimal Limite;
+        }
+
+        //Declaración de indice
+        private Int32 IND = 0;
+        private RegClientes[] vecClientes = new RegClientes[100];
 
         public void Grabar(string cod, string nom, string deu, string lim)
         {
             //ABRIR
-            StreamWriter AD = new StreamWriter(NombreArchivo, true); //Quiere decir que ya existen datos
+            StreamWriter AD = new StreamWriter(NombreArchivo, true); //Quiere decir que ya existen datos, que no los borre, sobreeescribe el archivo
 
             //CARGAR O LEER
             AD.Write(cod);
@@ -78,6 +89,71 @@ namespace pryRossiArchivos
                 AD.Dispose();
             }
             return encontrado;
+        }
+        private void CargarVector()
+        {
+            String datoLeido;
+            string[] vecDatos = new string[4];
+            IND = 0;
+
+            StreamReader AD = new StreamReader(NombreArchivo);
+            datoLeido = AD.ReadLine();
+
+            while (datoLeido != null)
+            {
+                vecDatos = datoLeido.Split(';');
+                vecClientes[IND].Codigo = Convert.ToInt32(vecDatos[0]);
+                vecClientes[IND].Nombre = vecDatos[1];
+                vecClientes[IND].Deuda = Convert.ToDecimal(vecDatos[2]);
+                vecClientes[IND].Limite = Convert.ToDecimal(vecDatos[3]);
+                IND++;
+                datoLeido = AD.ReadLine();
+              
+            }
+            AD.Close();
+            AD.Dispose();
+        }
+        private void OrdenarVector()
+        {
+            RegClientes aux;
+            for (int c = 0; c < IND - 1; c++)
+            {
+                for (int i = 0; i < IND - 1; i++) //
+                {
+                    if (vecClientes[i].Codigo > vecClientes[i + 1].Codigo)
+                    {
+                        aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = aux;
+                    }
+                }                
+            }           
+        }
+        private void ReescribirArc()
+        {
+            StreamWriter AD = new StreamWriter(NombreArchivo, false); //borra datos cargados y graba los nuevos pero de forma ordenada
+
+            for (int i = 0; i < IND; i++)
+            {
+                AD.Write(vecClientes[i].Codigo);
+                AD.Write(";");
+                AD.Write(vecClientes[i].Nombre);
+                AD.Write(";");
+                AD.Write(vecClientes[i].Deuda);
+                AD.Write(";");
+                AD.WriteLine(vecClientes[i].Limite);
+            }
+
+                //CERRAR
+                AD.Close();
+                AD.Dispose();
+            }
+      
+        public void OrdenarArchivo()
+        {
+            CargarVector();
+            OrdenarVector();
+            ReescribirArc();     
         }
 
         public Int32 CantClientes()

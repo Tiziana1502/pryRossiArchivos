@@ -33,5 +33,14 @@ namespace pryRossiArchivos
             MessageBox.Show("El reporte ha sido realizado", "Reporte Generado",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void Ordenar_Click(object sender, EventArgs e)
+        {            
+            arc.OrdenarArchivo();
+            arc.Listar(dgvClientes);
+            MessageBox.Show("El reporte se ha ordenado", "Archivo Ordenado",
+               MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
     }
 }
