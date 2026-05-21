@@ -66,11 +66,11 @@ namespace pryRossiArchivos
                     break;
             }
 
-            dgvListado.Rows.Clear();
-            for (Int32 i = 0; i < clsVector.IND; i++)
-            {
-                dgvListado.Rows.Add(clsVector.Clientes[i].Codigo, clsVector.Clientes[i].Nombre, clsVector.Clientes[i].Limite, clsVector.Clientes[i].Deuda);
-            }
+            //dgvListado.Rows.Clear();
+            //for (Int32 i = 0; i < clsVector.IND; i++)
+            //{
+              //  dgvListado.Rows.Add(clsVector.Clientes[i].Codigo, clsVector.Clientes[i].Nombre, clsVector.Clientes[i].Limite, clsVector.Clientes[i].Deuda);
+            //}
         }
 
         private void frmListadoOrdenado_Load(object sender, EventArgs e)

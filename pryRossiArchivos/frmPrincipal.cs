@@ -45,5 +45,11 @@ namespace pryRossiArchivos
             Form ven = new frmDeudores();
             ven.ShowDialog();
         }
+
+        private void listadoClientesOrdenadosPorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListadoOrdenado ven = new frmListadoOrdenado();
+            ven.ShowDialog();
+        }
     }
 }

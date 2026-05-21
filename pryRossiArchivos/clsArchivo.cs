@@ -20,7 +20,7 @@ namespace pryRossiArchivos
         }
 
         //Declaración de indice
-        private Int32 IND = 0;
+        public Int32 IND = 0;
         private RegClientes[] vecClientes = new RegClientes[100];
 
         public void Grabar(string cod, string nom, string deu, string lim)
@@ -340,165 +340,37 @@ namespace pryRossiArchivos
 
         static public void OrdenarPorCodigoAscendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Codigo > Clientes[i + 1].Codigo)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+            
         }
 
         static public void OrdenarPorCodigoDescendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Codigo < Clientes[i + 1].Codigo)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+            
         }
         static public void OrdenarPorNombreAscendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Nombre.CompareTo(Clientes[i + 1].Nombre) > 0)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+            
         }
 
         static public void OrdenarPorNombreDescendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Nombre.CompareTo(Clientes[i + 1].Nombre) < 0)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+            
         }
         static public void OrdenarPorLimiteAscendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Limite > Clientes[i + 1].Limite)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+            
         }
         static public void OrdenarPorLimiteDescendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Limite < Clientes[i + 1].Limite)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+            
         }
         static public void OrdenarPorDeudaAscendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Deuda > Clientes[i + 1].Deuda)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+            
         }
         static public void OrdenarPorDeudaDescendente()
         {
-            Int32 C = 0;
-            while (C < IND - 1)
-            {
-                Int32 i = 0;
-                RegClientes Aux;
-                while (i < IND - 1)
-                {
-                    if (Clientes[i].Deuda < Clientes[i + 1].Deuda)
-                    {
-                        Aux = Clientes[i]; //Llevo el registro completo con los 4 campos a variable auxiliar
-                        Clientes[i] = Clientes[i + 1];
-                        Clientes[i + 1] = Aux;
-                    }
-                    i++;
-                }
-                C++;
-            }
+
         }
 
     }
