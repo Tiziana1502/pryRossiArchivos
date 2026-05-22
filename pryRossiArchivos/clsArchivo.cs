@@ -62,6 +62,28 @@ namespace pryRossiArchivos
             AD.Close();
             AD.Dispose();
         }
+        public void ListarDeudores(DataGridView Grilla)
+        {
+            String datoLeido;
+            string[] vecDatos = new string[4];
+
+            StreamReader AD = new StreamReader(NombreArchivo);
+            datoLeido = AD.ReadLine();
+            Grilla.Rows.Clear();
+            
+            int i = 0;
+            while (i < IND)
+            {
+                vecDatos = datoLeido.Split(';');
+                if (Convert.ToDecimal(vecDatos[2]) > 0)
+                {
+                    Grilla.Rows.Add(vecDatos[0], vecDatos[1], vecDatos[2], vecDatos[3]);
+
+                }
+            }
+            AD.Close();
+            AD.Dispose();
+        }
         public bool ExisteCodigo(string cod)
         {
             string datoLeido;
@@ -90,7 +112,7 @@ namespace pryRossiArchivos
             }
             return encontrado;
         }
-        private void CargarVector()
+        public void CargarVector()
         {
             String datoLeido;
             string[] vecDatos = new string[4];
@@ -317,7 +339,7 @@ namespace pryRossiArchivos
                 Reporte.WriteLine(vecDatos[3]);
 
                 datoLeido = AD.ReadLine();
-                cant++; //acumulala cantidad de clientes
+                cant++; //acumula la cantidad de clientes
                 total = total + Convert.ToDecimal(vecDatos[2]);
                 promedio = Math.Round(total / cant);
             }
@@ -337,40 +359,168 @@ namespace pryRossiArchivos
             Reporte.Close();
             Reporte.Dispose();
         }
-
-        static public void OrdenarPorCodigoAscendente()
+      
+        public void OrdenarPorCodigoAscendente()
         {
-            
+            Int32 C = 0;
+            while (C < IND - 1)
+            {
+                Int32 i = 0;
+                RegClientes Aux;
+                while (i < IND - 1)
+                {
+                    if (vecClientes[i].Codigo > vecClientes[i + 1].Codigo)
+                    {
+                        Aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = Aux;
+                    }
+                    i++;
+                }
+                C++;
+            }
         }
 
-        static public void OrdenarPorCodigoDescendente()
+        public void OrdenarPorCodigoDescendente()
         {
-            
+            Int32 C = 0;
+            while (C < IND - 1)
+            {
+                Int32 i = 0;
+                RegClientes Aux;
+                while (i < IND - 1)
+                {
+                    if (vecClientes[i].Codigo < vecClientes[i + 1].Codigo)
+                    {
+                        Aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = Aux;
+                    }
+                    i++;
+                }
+                C++;
+            }
         }
-        static public void OrdenarPorNombreAscendente()
+        public void OrdenarPorNombreAscendente()
         {
-            
+            Int32 C = 0;
+            while (C < IND - 1)
+            {
+                Int32 i = 0;
+                RegClientes Aux;
+                while (i < IND - 1)
+                {
+                    if (vecClientes[i].Nombre.CompareTo(vecClientes[i + 1].Nombre) > 0)
+                    {
+                        Aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = Aux;
+                    }
+                    i++;
+                }
+                C++;
+            }
         }
 
-        static public void OrdenarPorNombreDescendente()
+        public void OrdenarPorNombreDescendente()
         {
-            
+            Int32 C = 0;
+            while (C < IND - 1)
+            {
+                Int32 i = 0;
+                RegClientes Aux;
+                while (i < IND - 1)
+                {
+                    if (vecClientes[i].Nombre.CompareTo(vecClientes[i + 1].Nombre) < 0)
+                    {
+                        Aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = Aux;
+                    }
+                    i++;
+                }
+                C++;
+            }
         }
-        static public void OrdenarPorLimiteAscendente()
+        public void OrdenarPorLimiteAscendente()
         {
-            
+            Int32 C = 0;
+            while (C < IND - 1)
+            {
+                Int32 i = 0;
+                RegClientes Aux;
+                while (i < IND - 1)
+                {
+                    if (vecClientes[i].Limite > vecClientes[i + 1].Limite)
+                    {
+                        Aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = Aux;
+                    }
+                    i++;
+                }
+                C++;
+            }
         }
-        static public void OrdenarPorLimiteDescendente()
+        public void OrdenarPorLimiteDescendente()
         {
-            
+            Int32 C = 0;
+            while (C < IND - 1)
+            {
+                Int32 i = 0;
+                RegClientes Aux;
+                while (i < IND - 1)
+                {
+                    if (vecClientes[i].Limite < vecClientes[i + 1].Limite)
+                    {
+                        Aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = Aux;
+                    }
+                    i++;
+                }
+                C++;
+            }
         }
-        static public void OrdenarPorDeudaAscendente()
+        public void OrdenarPorDeudaAscendente()
         {
-            
+            Int32 C = 0;
+    while (C < IND - 1)
+    {
+        Int32 i = 0;
+        RegClientes Aux;
+        while (i < IND - 1)
+        {
+            if (vecClientes[i].Deuda > vecClientes[i + 1].Deuda)
+            {
+                Aux = vecClientes[i];
+                vecClientes[i] = vecClientes[i + 1];
+                vecClientes[i + 1] = Aux;
+            }
+            i++;
         }
-        static public void OrdenarPorDeudaDescendente()
+        C++;
+    }
+        }
+        public void OrdenarPorDeudaDescendente()
         {
-
+            Int32 C = 0;
+            while (C < IND - 1)
+            {
+                Int32 i = 0;
+                RegClientes Aux;
+                while (i < IND - 1)
+                {
+                    if (vecClientes[i].Deuda < vecClientes[i + 1].Deuda)
+                    {
+                        Aux = vecClientes[i];
+                        vecClientes[i] = vecClientes[i + 1];
+                        vecClientes[i + 1] = Aux;
+                    }
+                    i++;
+                }
+                C++;
+            }
         }
 
     }

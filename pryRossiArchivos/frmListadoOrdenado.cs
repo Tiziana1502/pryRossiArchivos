@@ -16,7 +16,7 @@ namespace pryRossiArchivos
         {
             InitializeComponent();
         }
-
+        clsArchivo objOrden = new clsArchivo();
         private void btnListar_Click(object sender, EventArgs e)
         {
             cmbCampo.SelectedIndex = -1;
@@ -27,58 +27,54 @@ namespace pryRossiArchivos
                 case 0:
                     if (cmbCampo.SelectedIndex == 0)
                     {
-                        clsArchivo.OrdenarPorCodigoAscendente();
+                        objOrden.OrdenarPorCodigoAscendente();
                     }
                     else
                     {
-                        clsArchivo.OrdenarPorCodigoDescendente();
+                        objOrden.OrdenarPorCodigoDescendente();
                     }
                     break;
                 case 1:
                     if (cmbCampo.SelectedIndex == 1)
                     {
-                        clsArchivo.OrdenarPorNombreAscendente();
+                        objOrden.OrdenarPorNombreAscendente();
                     }
                     else
                     {
-                        clsArchivo.OrdenarPorNombreDescendente();
+                        objOrden.OrdenarPorNombreDescendente();
                     }
                     break;
                 case 2:
                     if (cmbCampo.SelectedIndex == 2)
                     {
-                        clsArchivo.OrdenarPorLimiteAscendente();
+                        objOrden.OrdenarPorLimiteAscendente();
                     }
                     else
                     {
-                        clsArchivo.OrdenarPorLimiteDescendente();
+                        objOrden.OrdenarPorLimiteDescendente();
                     }
                     break;
                 case 3:
                     if (cmbCampo.SelectedIndex == 3)
                     {
-                        clsArchivo.OrdenarPorDeudaAscendente();
+                        objOrden.OrdenarPorDeudaAscendente();
                     }
                     else
                     {
-                        clsArchivo.OrdenarPorDeudaDescendente();
+                        objOrden.OrdenarPorDeudaDescendente();
                     }
                     break;
             }
-
-            //dgvListado.Rows.Clear();
-            //for (Int32 i = 0; i < clsVector.IND; i++)
-            //{
-              //  dgvListado.Rows.Add(clsVector.Clientes[i].Codigo, clsVector.Clientes[i].Nombre, clsVector.Clientes[i].Limite, clsVector.Clientes[i].Deuda);
-            //}
+            
+            objOrden.Listar(dgvListado);            
         }
 
         private void frmListadoOrdenado_Load(object sender, EventArgs e)
         {
             cmbCampo.Items.Add("Código");
             cmbCampo.Items.Add("Nombre");
-            cmbCampo.Items.Add("Limite Crédito");
             cmbCampo.Items.Add("Deuda");
+            cmbCampo.Items.Add("Limite Crédito");          
 
             cmbModo.Items.Add("Ascendente");
             cmbModo.Items.Add("Descendente");
