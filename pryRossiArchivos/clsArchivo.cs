@@ -63,23 +63,23 @@ namespace pryRossiArchivos
             AD.Dispose();
         }
         public void ListarDeudores(DataGridView Grilla)
-        {
+        {        
+
             String datoLeido;
             string[] vecDatos = new string[4];
 
             StreamReader AD = new StreamReader(NombreArchivo);
             datoLeido = AD.ReadLine();
             Grilla.Rows.Clear();
-            
-            int i = 0;
-            while (i < IND)
+
+            while (datoLeido != null)
             {
                 vecDatos = datoLeido.Split(';');
-                if (Convert.ToDecimal(vecDatos[2]) > 0)
+                if(Convert.ToDecimal(vecDatos[2]) > 0)
                 {
-                    Grilla.Rows.Add(vecDatos[0], vecDatos[1], vecDatos[2], vecDatos[3]);
-
+                    Grilla.Rows.Add(vecDatos[0], vecDatos[1], vecDatos[2], vecDatos[3]);                    
                 }
+                datoLeido = AD.ReadLine();
             }
             AD.Close();
             AD.Dispose();
@@ -151,7 +151,7 @@ namespace pryRossiArchivos
                 }                
             }           
         }
-        private void ReescribirArc()
+        public void ReescribirArc()
         {
             StreamWriter AD = new StreamWriter(NombreArchivo, false); //borra datos cargados y graba los nuevos pero de forma ordenada
 

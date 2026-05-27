@@ -60,7 +60,7 @@
             this.gbConsulta.Size = new System.Drawing.Size(659, 468);
             this.gbConsulta.TabIndex = 14;
             this.gbConsulta.TabStop = false;
-            this.gbConsulta.Text = "Consulta de Datos";
+            this.gbConsulta.Text = "Consulta de Datos";     
             // 
             // dgvClientes
             // 
@@ -156,13 +156,14 @@
             this.colNombre.HeaderText = "Nombre";
             this.colNombre.MinimumWidth = 6;
             this.colNombre.Name = "colNombre";
-            this.colNombre.Width = 170;
+            this.colNombre.Width = 150;
             // 
             // colDeuda
             // 
             this.colDeuda.HeaderText = "Deuda";
             this.colDeuda.MinimumWidth = 6;
             this.colDeuda.Name = "colDeuda";
+            this.colDeuda.Width = 125;
             // 
             // colLimite
             // 

@@ -27,7 +27,6 @@ namespace pryRossiArchivos
             lblPromedio.Text = "$" + arc.PromDeudores().ToString();
             
         }
-
         
     }
 }
